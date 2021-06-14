@@ -34,7 +34,7 @@ class Calculadora extends Component {
             value: "0",
             click: "",
         };
-        this.o = 1;
+        this.o = true;
     }
     
     handleLimpiar =() =>{

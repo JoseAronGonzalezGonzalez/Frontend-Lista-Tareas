@@ -42,7 +42,6 @@ class Calculadora extends Component {
         this.setState({value: "0", click: ""});
         this.o=true;
     };
-
     handlePer = () =>{
         const {value, click} = this.state;
         if (click) {
@@ -64,9 +63,7 @@ class Calculadora extends Component {
                 value:"0",
             });
         }
-
     };
-
     handlePunto = () => {
         const {value} = this.state;
         if (value.includes(".")) {
@@ -87,7 +84,6 @@ class Calculadora extends Component {
                 click:"",
             });
         }
-
     };
 
     handletest1 =() =>{
@@ -104,22 +100,15 @@ class Calculadora extends Component {
         const {value, click}= this.state;
         console.log(numero);
         if (this.o) {
-            
             this.setState({
-                
                 value: numero,
-                
             });
         }else{
 
             this.setState({value: value+numero});
         }
         this.o=false;
-
-
     };
-
-
 
    render() {
        const {value,click}=this.state;

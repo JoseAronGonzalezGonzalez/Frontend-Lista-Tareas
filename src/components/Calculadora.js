@@ -1,8 +1,12 @@
 import React,{ Component, memo} from 'react';
 import '../index.css';
+import Botones from './atoms/Boton/Botones';
+import BotonesMatrix from "./atoms/BotonesMatrix/BotonesMatrix";
+
+const { BotonesMatrixContainer, BotonesMatrixItem} = BotonesMatrix;
 
 const styles = {
-    container: {
+    /*container: {
         display: "inline-flex",
         marginBottom: "15px",
         background: "#525454",
@@ -14,7 +18,7 @@ const styles = {
         listStyle: "none",
         paddingLeft: "2px",
 
-    },
+    },*/
     muestra:
     {
         background: "#676767",
@@ -23,7 +27,13 @@ const styles = {
     }
 
 
+};
 
+
+const styles2 = {
+    tetts:{
+        display: "flex",
+    }
 };
 
 class Calculadora extends Component {
@@ -35,6 +45,103 @@ class Calculadora extends Component {
             click: "",
         };
         this.o = true;
+        this.btns =[
+            {
+                text: "AC",
+                fn: this.handleLimpiar,
+                type: "tpButton"
+            },
+            {
+                text: "+/-",
+                fn: this.handletest1,
+                type: "dark"
+            },
+            {
+                text: "%",
+                fn: this.handlePer,
+                type: "dark"
+            },
+            {
+                text: "/",
+                fn: ()=>this.handleopera2("/"),
+                type: "accent"
+            },
+            {
+                text: "7",
+                fn: ()=>this.handleNumero("7"),
+                type: "dark"
+            },
+            {
+                text: "8",
+                fn: ()=>this.handleNumero("8"),
+                type: "dark"
+            },
+            {
+                text: "9",
+                fn: ()=>this.handleNumero("9"),
+                type: "dark"
+            },
+            {
+                text: "x",
+                fn: ()=>this.handleopera2("*"),
+                type: "accent"
+            },
+            {
+                text: "4",
+                fn: ()=>this.handleNumero("4"),
+                type: "dark"
+            },
+            {
+                text: "5",
+                fn: ()=>this.handleNumero("5"),
+                type: "dark"
+            },
+            {
+                text: "6",
+                fn: ()=>this.handleNumero("6"),
+                type: "dark"
+            },
+            {
+                text: "-",
+                fn: ()=>this.handleopera2("-"),
+                type: "accent"
+            },
+            {
+                text: "1",
+                fn: ()=>this.handleNumero("1"),
+                type: "dark"
+            },
+            {
+                text: "2",
+                fn: ()=>this.handleNumero("2"),
+                type: "dark"
+            },
+            {
+                text: "3",
+                fn: ()=>this.handleNumero("3"),
+                type: "dark"
+            },
+            {
+                text: "+",
+                fn: ()=>this.handleopera2("+"),
+                type: "accent"
+            },
+            {
+                text: "0",
+                fn: ()=>this.handleNumero("0"),
+                type: "dark"
+            },
+            {
+                text: ".",
+                fn: this.handlePunto,
+                type: "dark"
+            },
+            {
+                text: "=",
+                fn: this.handleResultado,
+                type: "accent"
+            },
+        ];
     }
     
     handleLimpiar =() =>{
@@ -42,6 +149,7 @@ class Calculadora extends Component {
         this.setState({value: "0", click: ""});
         this.o=true;
     };
+
     handlePer = () =>{
         const {value, click} = this.state;
         if (click) {
@@ -54,6 +162,7 @@ class Calculadora extends Component {
             });
         }
     };
+
     handleopera2 = (operador) => {
         const { value, click }= this.state;
         if (value[value.length] !== ".") {
@@ -64,6 +173,7 @@ class Calculadora extends Component {
             });
         }
     };
+
     handlePunto = () => {
         const {value} = this.state;
         if (value.includes(".")) {
@@ -117,77 +227,22 @@ class Calculadora extends Component {
            <div className="container" >
 
                 <div > <label style={styles.muestra}>{click}{value}</label></div>
-
-                <div style={styles.container}>
-                    <ul style={styles.liCont}>
-                        <li>
-                            <button className="btn btn-dark" onClick={this.handleLimpiar}>AC</button>
-                        </li>
-                        <li>
-                            <button className="btn btn-dark" onClick={()=>this.handleNumero("7")}>7</button>
-                        </li>
-                        <li>
-                            <button className="btn btn-dark" onClick={()=>this.handleNumero("4")}>4</button>
-                        </li>
-                        <li>
-                            <button className="btn btn-dark" onClick={()=>this.handleNumero("1")}>1</button>
-                        </li>
-                        <li>
-                            <button className="btn btn-dark" onClick={()=>this.handleNumero("0")}>0</button>
-                        </li>
-                    </ul>
-                    <ul style={styles.liCont}>
-                        <li>
-                            <button className="btn btn-dark" onClick={this.handletest1}>-/+</button>
-                        </li>
-                        <li>
-                            <button className="btn btn-dark" onClick={()=>this.handleNumero("8")}>8</button>
-                        </li>
-                        <li>
-                            <button className="btn btn-dark" onClick={()=>this.handleNumero("5")}>5</button>
-                        </li>
-                        <li>
-                            <button className="btn btn-dark" onClick={()=>this.handleNumero("2")}>2</button>
-                        </li>
-                        <li>
-                            <button className="btn btn-dark" onClick={this.handlePunto}>.</button>
-                        </li>
-                    </ul>
-                    <ul style={styles.liCont}>
-                        <li>
-                            <button className="btn btn-dark" onClick={this.handlePer}>%</button>
-                        </li>
-                        <li>
-                            <button className="btn btn-dark" onClick={()=>this.handleNumero("9")}>9</button>
-                        </li>
-                        <li>
-                            <button className="btn btn-dark" onClick={()=>this.handleNumero("6")}>6</button>
-                        </li>
-                        <li>
-                            <button className="btn btn-dark" onClick={()=>this.handleNumero("3")}>3</button>
-                        </li>
-                        <li>
-                            <button className="btn btn-dark" onClick={this.handlePunto}>.</button>
-                        </li>
-                    </ul>
-                    <ul style={styles.liCont}>
-                        <li>
-                            <button className="btn btn-warning" onClick={() => this.handleopera2("/")}>/</button>
-                        </li>
-                        <li>
-                            <button className="btn btn-warning" onClick={()=>this.handleopera2("*")}>*</button>
-                        </li>
-                        <li>
-                            <button className="btn btn-warning" onClick={()=>this.handleopera2("-")}>-</button>
-                        </li>
-                        <li>
-                            <button className="btn btn-warning" onClick={()=>this.handleopera2("+")}>+</button>
-                        </li>
-                        <li>
-                            <button className="btn btn-warning" onClick={this.handleResultado}>=</button>
-                        </li>
-                    </ul>
-                </div>
+                
+                    <div style={styles.container}>
+                    <BotonesMatrixContainer className={styles2.tetts}>
+                        {
+                            this.btns.map((btn) => {
+                                return(
+                                    <BotonesMatrixItem>
+                                        <Botones onClick={btn.fn} type={btn.type}>
+                                            {btn.text}
+                                        </Botones>
+                                    </BotonesMatrixItem>
+                                );
+                            })
+                        }
+                    </BotonesMatrixContainer>
+                    </div>
            </div>
        )
    }

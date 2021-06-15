@@ -25,3 +25,12 @@ button{
 
 }
 
+li{
+  
+  display: flex;
+
+}
+
+.lista{
+  display: flex;
+}

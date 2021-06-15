@@ -25,8 +25,6 @@ const styles = {
         borderRadius: "8px",      
         width: "202px",
     }
-
-
 };
 
 

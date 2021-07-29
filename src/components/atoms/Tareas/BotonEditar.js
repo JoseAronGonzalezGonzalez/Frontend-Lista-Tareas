@@ -2,15 +2,19 @@ import React, { Component } from 'react';
 import "../../../css/Tareas/editar.css";
 import axios from "axios";
 import { getToken } from '../../../utils/auth/Token';
-
+import {Button, Modal,ModalHeader ,ModalBody ,ModalFooter} from 'reactstrap';
 
 class Editar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            estado: "hidden",
+            estado: false,
             id: this.props.id,
         }
+    }
+
+    handleEstado=()=>{
+        this.setState({estado: !this.state.estado});
     }
 
     handleOnInputChange = (key, event) => {
@@ -18,16 +22,7 @@ class Editar extends Component {
             [key]: event.target.value,
         });
     };
-    handleActivar() {
-        const estado = { estado: "block" };
-        this.setState(estado)
-    }
-    handleDesactivar() {
-        const estado = { estado: "hidden" };
-        this.setState(estado)
 
-
-    }
     handleEditar(data) {
         console.log(this.state)
         axios.put(`http://localhost:3000/tareas/modificar-task`, {
@@ -48,41 +43,41 @@ class Editar extends Component {
         })
     }
     render() {
+        
         return (
             <div>
-                <button
-                    className="bg-yellow-200 border-yellow-400 border-2 rounded-lg hover:bg-yellow-400 cursor-pointer p-1"
-                    onClick={() => this.handleActivar()}>
-                    Editar
-                </button>
+                <Button className="btn btn-success" onClick={this.handleEstado}>Editar</Button>
 
-                <div className={`w-96 fixed ${this.state.estado} bg-yellow-400 bottom-0 right-9 rounded-lg border-yellow-700 p-4`}>
-                    <label className="w-full">Titulo</label>
-                    <input
-                        className="w-full"
-                        type="text"
-                        onChange={(event) => this.handleOnInputChange("title", event)}
-                    />
-                    <label className="w-full">Descripción</label>
-                    <input
-                        className="w-full"
-                        type="text"
-                        onChange={(event) => this.handleOnInputChange("description", event)}
-                    />
-                    <label className="w-full ">estatus</label>
-                    <input
-                        className="w-full"
-                        type="text"
-                        onChange={(event) => this.handleOnInputChange("estatus", event)}
-                    />
-                    <label className="w-full">Fecha a realizar</label>
-                    <input
-                        className="w-full"
-                        type="datetime-local"
-                        onChange={(event) => this.handleOnInputChange("fecha", event)}
-                    />
-                    <button className="w-1/3 bg-blue-500 border-4 border-blue-700" onClick={() => { this.handleEditar(this.state); this.handleDesactivar(); }} >Aceptar</button>
-                </div>
+                <Modal isOpen={this.state.estado}>
+                    <ModalHeader>
+                        Modificar
+                    </ModalHeader>
+                    <ModalBody>
+                    <div className="">
+                        <label className="">Titulo</label>
+                        <input
+                            className="" type="text"
+                            onChange={(event) => this.handleOnInputChange("title", event)}/>
+                        <label className="">Descripción</label>
+                        <input
+                            className="" type="text" onChange={(event) => this.handleOnInputChange("description", event)}/>
+                        <label className="">estatus</label>
+                        <input
+                            className="" type="text" onChange={(event) => this.handleOnInputChange("estatus", event)}/>
+                        <label className="">Fecha a realizar</label>
+                        <input
+                            className="" type="datetime-local" onChange={(event) => this.handleOnInputChange("fecha", event)}/>
+                        <button className="" onClick={() => { this.handleEditar(this.state); this.handleEstado(); }} >Aceptar</button>
+                    </div>
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button className="btn btn-primary" onClick={this.handleEstado}>
+                            Cerrar
+                        </Button>
+                    </ModalFooter>
+                </Modal>
+
+                
             </div>
         );
     }

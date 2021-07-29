@@ -5,6 +5,7 @@ import PrivateRoute from "./utils/auth/PrivateRoute";
 import Tareas from  "./components/pages/Tareas";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 function App() {
   return (
     <Router>

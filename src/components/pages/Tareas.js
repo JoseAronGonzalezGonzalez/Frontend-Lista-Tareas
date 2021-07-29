@@ -15,11 +15,11 @@ class Tareas extends Component {
     render() {
 
         return (
-            <div className="w-screen h-screen inline-flex bg-gradient-to-r from-blue-500 via-blue-900 to-black">
+            <div className="">
                 <TablaTareas></TablaTareas>
-                <div className="block w-1/3 text-center ">
+                <div className="">
                     <AddTarea></AddTarea>
-                    <button className="bg-red-500 border-4 border-red-700 text-xl w-2/3 rounded-md" onClick={() => this.handleLoguot()}>Cerrar Sesion</button>
+                    <button className="" onClick={() => this.handleLoguot()}>Cerrar Sesion</button>
                 </div>
             </div>
         );

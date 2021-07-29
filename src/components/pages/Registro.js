@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import { loginServices, registroService } from "../../utils/api/services";
 import { withRouter } from "react-router-dom";
 import { setToken } from "../../utils/auth/Token";
-// import axios from "axios";
-import "../../css/Login/login.css"
+
+import "../../css/Login/login.css";
+import imagen2 from '../../asset/img/edit.png';
 class Registro extends Component {
     constructor(props) {
         super(props);
@@ -47,19 +48,45 @@ class Registro extends Component {
     render() {
         return (
 
-            <div className="bg-gradient-to-r from-blue-500 via-blue-900 to-black w-screen h-screen  text-center content-center">
-                <div className="Formulario font-mono inline-block w-1/3 mx-auto  space-y-3  border-4 mt-52 rounded-xl p-6">
-                    <div className="w-full inline-flex bg-green-300 rounded-lg">
-                        <h2 className=" underline text-xl rounded-l-lg w-1/2 p-auto bg-green-400">Registro</h2>
-                        <button className="text-xl  text-white hover:undeline" onClick={() => this.handleLogin()}>Iniciar Sesion</button>
+            <div className="font">
+                <div className="container">
+                    <div className="medio">
+                        
+                        <div className="ajuste">
+                            <h2 className="">Registro</h2>
+                            <img src={imagen2}></img>
 
+                        </div>
+
+                        <div className="mb-1">
+                            <label className="form-label">Nombre</label>
+                            <input type="text" className="form-control" aria-describedby="emailHelp" required onChange={(event) => this.handleOnInputChange("nombre", event)}/>
+                            
+                        </div>
+                        <div className="mb-1">
+                            <label className="form-label">apellidos</label>
+                            <input type="text" className="form-control" aria-describedby="emailHelp" required onChange={(event) => this.handleOnInputChange("apellidos", event)}/>
+                            
+                        </div>
+                        <div className="mb-1">
+                            <label className="form-label">edad</label>
+                            <input type="number" className="form-control" min="0" max="100" aria-describedby="emailHelp" required onChange={(event) => this.handleOnInputChange("edad", event)}/>
+                            
+                        </div>
+                        <div className="mb-1">
+                            <label className="form-label">email</label>
+                            <input type="email" className="form-control" aria-describedby="emailHelp" required onChange={(event) => this.handleOnInputChange("email", event)}/>
+                            
+                        </div>
+                        <div className="mb-3">
+                            <label className="form-label">contraseña</label>
+                            <input type="password" className="form-control" aria-describedby="emailHelp" required onChange={(event) => this.handleOnInputChange("password", event)}/>
+                            
+                        </div>
+                        <button className="btn btn-info" onClick={() => this.handleRegistro()}>Registrar</button>
+                        <span className="posicion1">¿tienes cuenta?, inicia sesión</span>
+                        <button className="btn btn-outline-dark" onClick={() => this.handleLogin()}>Iniciar sesión</button>
                     </div>
-                    <input className="w-full" placeholder="nombre" type="text" required onChange={(event) => this.handleOnInputChange("nombre", event)}/>
-                    <input className="w-full" placeholder="apellidos" type="text" required onChange={(event) => this.handleOnInputChange("apellidos", event)}/>
-                    <input className="w-full" placeholder="edad" type="text" required onChange={(event) => this.handleOnInputChange("edad", event)}/>
-                    <input className="w-full" placeholder="email" type="email" required onChange={(event) => this.handleOnInputChange("email", event)}/>
-                    <input className="w-full" placeholder="Password" type="password" onChange={(event) => this.handleOnInputChange("password", event)}/>
-                    <button className="bg-green-400 border-4 border-green-600 rounded-xl p-1 text-white" onClick={() => this.handleRegistro()}>Registrar</button>
 
                 </div>
             </div>

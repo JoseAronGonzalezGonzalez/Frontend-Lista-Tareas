@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { loginServices } from "../../utils/api/services";
 import { withRouter } from "react-router-dom";
 import { setToken } from "../../utils/auth/Token";
-import "../../css/Login/login.css"
+import "../../css/Login/login.css";
+
+import imagen from '../../asset/img/user.png';
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -39,8 +41,9 @@ class Login extends Component {
       <div className="font">
         <div className="container">
           <div className="medio">
-            <div className="">
+            <div className="ajuste">
               <h3 className="">Pagina de lista de tareas</h3>
+              <img src={imagen}></img>
               <h5 className=""> Iniciar Sesion </h5>
             </div>
             <div className="mb-3">
@@ -52,9 +55,9 @@ class Login extends Component {
               <input type="password" className="form-control" onChange={(event) => this.handleOnInputChange("password", event)}/>
             </div>
             
-            <button className="btn btn-primary" onClick={this.handleLogin}>Iniciar sesión</button>
+            <button className="btn btn-outline-info" onClick={this.handleLogin}>Iniciar sesión</button>
             <span className="posicion">¿No tienes cuenta?, registrate</span>
-            <button className="" className="btn btn-primary" onClick={this.handleRegistro}>Resgistrar aquí</button>
+            <button className="btn btn-outline-dark" onClick={this.handleRegistro}>Registrar aquí</button>
           </div>
 
         </div>

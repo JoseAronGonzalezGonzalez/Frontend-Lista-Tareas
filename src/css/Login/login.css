@@ -19,12 +19,22 @@
 
 .medio{
     border-radius: 3%;
-    padding: 5%;
+    padding: 7%;
     background-color: white;
     box-shadow: 0px 0px 30px black;
 }
 .posicion{
-    margin-left: 6%;
+    margin-left: 3%;
     font-style: italic;
     margin-right: 1px;
+}
+
+.posicion1{
+    margin-left: 11%;
+    font-style: italic;
+    margin-right: 3px;
+}
+.ajuste{
+
+    text-align: center;
 }

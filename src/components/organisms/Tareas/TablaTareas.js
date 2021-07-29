@@ -53,15 +53,15 @@ class Tareas extends Component {
     render() {
         console.log(this.state.tareas);
         return (
-            <div className=" w-2/3 ml-2 h-screen overflow-y-auto">
-                <table className="rounded-xl min-w-full">
+            <div className="">
+                <table className="">
                     <tbody>
-                        <tr className="bg-black rounded-l-md text-lg">
-                            <th className="rounded-l-md">Titulo</th>
+                        <tr className="">
+                            <th className="">Titulo</th>
                             <th>Descripcion</th>
                             <th>estatus</th>
                             <th>Fecha</th>
-                            <th className="rounded-r-md">Acciones</th>
+                            <th className="">Acciones</th>
                         </tr>
                         {this.state.tareas.map(tarea => {
                             let fecha = moment(tarea.fecha).format('DD-MM-YYYY hh:mm');

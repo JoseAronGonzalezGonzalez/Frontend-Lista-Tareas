@@ -1,10 +1,9 @@
-import { BrowserRouter as Router,
-   Switch,
-    Route } from "react-router-dom";
+import { BrowserRouter as Router,Switch,Route } from "react-router-dom";
 import Login from "./components/pages/Login";
 import Registro from "./components/pages/Registro";
 import PrivateRoute from "./utils/auth/PrivateRoute";
 import Tareas from  "./components/pages/Tareas";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

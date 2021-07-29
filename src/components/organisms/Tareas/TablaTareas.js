@@ -56,7 +56,7 @@ class Tareas extends Component {
             <div className=" w-2/3 ml-2 h-screen overflow-y-auto">
                 <table className="rounded-xl min-w-full">
                     <tbody>
-                        <tr className="bg-black rounded-l-md text-white text-lg">
+                        <tr className="bg-black rounded-l-md text-lg">
                             <th className="rounded-l-md">Titulo</th>
                             <th>Descripcion</th>
                             <th>estatus</th>
@@ -67,12 +67,7 @@ class Tareas extends Component {
                             let fecha = moment(tarea.fecha).format('DD-MM-YYYY hh:mm');
                             
                             return (
-                                <Tarea
-                                    key={`tarea-${tarea.id}`}
-                                    title={tarea.title}
-                                    description={tarea.description}
-                                    estatus={tarea.estatus}
-                                    fecha={fecha}
+                                <Tarea key={`tarea-${tarea.id}`} title={tarea.title} description={tarea.description} estatus={tarea.estatus} fecha={fecha}
                                     borrar={() => this.handleBorrar(tarea.id)}
                                     id={tarea.id}
                                 />

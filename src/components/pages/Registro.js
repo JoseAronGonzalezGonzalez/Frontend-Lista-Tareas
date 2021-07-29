@@ -54,19 +54,11 @@ class Registro extends Component {
                         <button className="text-xl  text-white hover:undeline" onClick={() => this.handleLogin()}>Iniciar Sesion</button>
 
                     </div>
-                    <input
-                        className="w-full"
-                        placeholder="email"
-                        type="email"
-                        required
-                        onChange={(event) => this.handleOnInputChange("email", event)}
-                    />
-                    <input
-                        className="w-full"
-                        placeholder="Password"
-                        type="password"
-                        onChange={(event) => this.handleOnInputChange("password", event)}
-                    />
+                    <input className="w-full" placeholder="nombre" type="text" required onChange={(event) => this.handleOnInputChange("nombre", event)}/>
+                    <input className="w-full" placeholder="apellidos" type="text" required onChange={(event) => this.handleOnInputChange("apellidos", event)}/>
+                    <input className="w-full" placeholder="edad" type="text" required onChange={(event) => this.handleOnInputChange("edad", event)}/>
+                    <input className="w-full" placeholder="email" type="email" required onChange={(event) => this.handleOnInputChange("email", event)}/>
+                    <input className="w-full" placeholder="Password" type="password" onChange={(event) => this.handleOnInputChange("password", event)}/>
                     <button className="bg-green-400 border-4 border-green-600 rounded-xl p-1 text-white" onClick={() => this.handleRegistro()}>Registrar</button>
 
                 </div>

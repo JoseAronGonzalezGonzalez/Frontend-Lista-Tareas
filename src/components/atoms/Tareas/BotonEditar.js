@@ -13,6 +13,11 @@ class Editar extends Component {
         }
     }
 
+    style={
+        padding: '5% 15%',
+        marginBottom: '8px',
+    }
+
     handleEstado=()=>{
         this.setState({estado: !this.state.estado});
     }
@@ -46,14 +51,14 @@ class Editar extends Component {
         
         return (
             <div>
-                <Button className="btn btn-success" onClick={this.handleEstado}>Editar</Button>
+                <Button color="outline-success" className="editarBtn" style={this.style} onClick={this.handleEstado}>Editar</Button>
 
                 <Modal isOpen={this.state.estado}>
                     <ModalHeader>
                         Modificar
                     </ModalHeader>
                     <ModalBody>
-                    <div className="">
+                    <div className="contenedor1">
                         <label className="">Titulo</label>
                         <input
                             className="" type="text"
@@ -62,18 +67,28 @@ class Editar extends Component {
                         <input
                             className="" type="text" onChange={(event) => this.handleOnInputChange("description", event)}/>
                         <label className="">estatus</label>
-                        <input
-                            className="" type="text" onChange={(event) => this.handleOnInputChange("estatus", event)}/>
+                        <div>
+                            
+                            <input className="radioInput" type="radio" id="Sin Realizar" name="Sin Realizar" value="Sin Realizar" onChange={(event) => this.handleOnInputChange("estatus", event)}/>
+                            <label for="Sin Realizar">Sin Realizar</label>
+                        </div>
+                        <div>
+                            
+                            <input className="radioInput" type="radio" id="Realizado" name="Realizado" value="Realizado" onChange={(event) => this.handleOnInputChange("estatus", event)}/>
+                            <label for="Realizado">Realizado</label>
+                        </div>
+                       
                         <label className="">Fecha a realizar</label>
                         <input
                             className="" type="datetime-local" onChange={(event) => this.handleOnInputChange("fecha", event)}/>
-                        <button className="" onClick={() => { this.handleEditar(this.state); this.handleEstado(); }} >Aceptar</button>
+                        
                     </div>
                     </ModalBody>
                     <ModalFooter>
                         <Button className="btn btn-primary" onClick={this.handleEstado}>
                             Cerrar
                         </Button>
+                        <button className="btn btn-success" onClick={() => { this.handleEditar(this.state); this.handleEstado(); }} >Guardar</button>
                     </ModalFooter>
                 </Modal>
 

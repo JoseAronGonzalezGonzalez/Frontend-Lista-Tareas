@@ -1,0 +1,18 @@
+.contenedor1{
+
+    display: grid;
+    padding: 5%;
+}
+
+.contenedor1 label{
+    margin-top: 0%;
+}
+
+.radioInput{
+
+    margin: .4rem;
+}
+
+.editarBtn{
+    padding: 50px 5px;
+}

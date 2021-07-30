@@ -12,14 +12,21 @@ class Tareas extends Component {
         this.props.history.push("/")
     }
    
+    style={
+
+        marginTop: '10px',
+        marginBottom: '10px',
+    }
+
     render() {
 
         return (
-            <div className="">
+            <div className="container">
+                
+                <button className="btn btn-outline-dark" style={this.style} onClick={() => this.handleLoguot()}>Cerrar Sesion</button>
                 <TablaTareas></TablaTareas>
                 <div className="">
                     <AddTarea></AddTarea>
-                    <button className="" onClick={() => this.handleLoguot()}>Cerrar Sesion</button>
                 </div>
             </div>
         );

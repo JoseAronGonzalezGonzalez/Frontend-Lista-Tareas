@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { getToken } from "../../../utils/auth/Token";
 
-
+import {Button, Modal,ModalHeader ,ModalBody ,ModalFooter} from 'reactstrap';
 
 class AddTarea extends Component {
     constructor(props) {
@@ -34,35 +34,55 @@ class AddTarea extends Component {
             alert(error.response.data.message);
         })
     }
+
+    state={
+
+        act: false,
+     }
+
+     handleActivado=()=>{
+        this.setState({act: !this.state.act});
+    }
+
     render() {
         return (
-            <div className="block w-full border-2 border-green-500 text-xl bg-green-300 text-center h-1/2 rounded-lg p-2">
-                <label className="w-full">Titulo</label>
-                <input
-                className="w-full"
-                    type="text"
-                    onChange={(event) => this.handleOnInputChange("title", event)}
-                />
-                <label className="w-full">Descripción</label>
-                <input 
-                className="w-full"
-                type="text" 
-                rows="20"
-                onChange={(event) => this.handleOnInputChange("description", event)}
-                />
-                <label className="w-full ">estatus</label>
-                <input 
-                className="w-full"
-                type="text" 
-                onChange={(event) => this.handleOnInputChange("estatus", event)}
-                />
-                <label className="w-full">Fecha a realizar</label>
-                <input 
-                className="w-full"
-                type="datetime-local" 
-                onChange={(event) => this.handleOnInputChange("fecha", event)}
-                />
-                <button className="w-1/3 bg-blue-500 border-4 border-blue-700" onClick={() => this.handleAgregar(this.state)}>Agregar</button>
+
+            <div className="">
+
+                <div>
+                    <Button color="outline-info" className="" onClick={this.handleActivado}>Agregar Nueva Tarea</Button>
+                    <Modal isOpen={this.state.act}>
+                        <ModalHeader>
+                            Agregando Nueva Tarea
+                        </ModalHeader>
+                        <ModalBody>
+                            <label className="">Titulo</label>
+                            <input className="" type="text" onChange={(event) => this.handleOnInputChange("title", event)}/>
+                            
+                            <label className="">Descripción</label>
+                            <input className="" type="text" onChange={(event) => this.handleOnInputChange("description", event)}/>
+                            
+                            <label className="">Estatus</label>
+                            <div>       
+                                <input className="radioInput" type="radio" id="Sin Realizar" name="Sin Realizar" value="Sin Realizar" onChange={(event) => this.handleOnInputChange("estatus", event)}/>
+                                <label for="Sin Realizar">Sin Realizar</label>
+                            </div>
+                            <div>       
+                                <input className="radioInput" type="radio" id="Realizado" name="Realizado" value="Realizado" onChange={(event) => this.handleOnInputChange("estatus", event)}/>
+                                <label for="Realizado">Realizado</label>
+                            </div>               
+
+                            <label className="">Fecha a realizar</label>
+                            <input className="" type="datetime-local" onChange={(event) => this.handleOnInputChange("fecha", event)}/>
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button className="btn btn-primary" onClick={this.handleActivado}>Cerrar</Button>
+                            <button className="btn btn-info" onClick={() => {this.handleAgregar(this.state); this.handleActivado();}}>Agregar</button>
+                        </ModalFooter>
+                    </Modal>
+
+                    
+                </div>
             </div>
         );
     }

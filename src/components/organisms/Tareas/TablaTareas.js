@@ -50,18 +50,23 @@ class Tareas extends Component {
     handleActivar(){
         
     }
+
+    style={
+        marginTop: '10px',
+        marginBottom: '20px',
+    }
     render() {
         console.log(this.state.tareas);
         return (
             <div className="">
-                <table className="">
+                <table className="table table-bordered" style={this.style}>
                     <tbody>
-                        <tr className="">
+                        <tr className="table-dark">
                             <th className="">Titulo</th>
                             <th>Descripcion</th>
-                            <th>estatus</th>
+                            <th>Estatus</th>
                             <th>Fecha</th>
-                            <th className="">Acciones</th>
+                            <th className="">Opciones</th>
                         </tr>
                         {this.state.tareas.map(tarea => {
                             let fecha = moment(tarea.fecha).format('DD-MM-YYYY hh:mm');
